@@ -1,0 +1,67 @@
+{
+  "name": "todoage",
+  "displayName": "TodoAge",
+  "description": "Shows how old each TODO/FIXME comment is (via git blame) and flags stale ones directly in the editor.",
+  "version": "0.1.2",
+  "publisher": "jaytankdev",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "todo",
+    "fixme",
+    "git blame",
+    "stale",
+    "comments"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#8A4A12",
+    "theme": "dark"
+  },
+  "license": "MIT",
+  "homepage": "https://marketplace.visualstudio.com/items?itemName=jaytankdev.todoage",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jay-tank/todoage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jay-tank/todoage/issues"
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "TodoAge runs `git blame` inside the workspace folder, which honors repo-local git configuration. Age annotations are disabled in untrusted workspaces and enabled automatically once the workspace is trusted."
+    }
+  },
+  "contributes": {
+    "configuration": {
+      "title": "TodoAge",
+      "properties": {
+        "todoAge.staleDays": {
+          "type": "number",
+          "default": 90,
+          "description": "Number of days after which a TODO/FIXME comment is considered stale."
+        },
+        "todoAge.tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "TODO",
+            "FIXME"
+          ],
+          "description": "Comment tags to track (case-insensitive)."
+        }
+      }
+    }
+  }
+}
